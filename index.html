@@ -1,0 +1,371 @@
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <!-- Demo styles -->
+  <style>
+    html, body
+    {
+      position: relative;
+      height: 100%;
+    }
+
+    @font-face
+    {
+      font-family: Merkury;
+      /*src: url(https://45.76.135.158/assets/merkury_medium.woff) format('woff'), url(https://45.76.135.158/assets/merkury_medium.otf) format('otf');*/
+      src: url(https://45.76.135.158/assets/merkury_medium.otf);
+    }
+    @font-face
+    {
+      font-family: Mufta;
+      /*src: url(https://45.76.135.158/assets/Mufta-Light.woff) format('woff'), url(https://45.76.135.158/assets/Mufta-Light.otf) format('otf');*/
+      src: url(https://45.76.135.158/assets/Mufta-Light.otf);
+    }
+
+    body
+    {
+      background: #242225;
+      font-family: Mufta, Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    a, p
+    {
+      color: #fff;
+    }
+
+    .swiper-container
+    {
+      width: 100%;
+      height: 100%;
+      background: #242225;
+    }
+
+    .mercury
+    {
+      font-family: Merkury;
+    }
+
+    .swiper-slide
+    {
+      position: relative;
+      width: 300px;
+      text-align: center;
+      font-size: 18px;
+             -webkit-box-pack: center;
+                -ms-flex-pack: center;
+      -webkit-justify-content: center;
+              justify-content: center;
+            -webkit-box-align: center;
+               -ms-flex-align: center;
+          -webkit-align-items: center;
+                  align-items: center;
+    }
+    .swiper-slide img
+    {
+      display: none;
+      position: absolute;
+      left: 75px;
+      top: 160px;
+      width: 200px;
+    }
+    .swiper-slide:hover img{
+      display: block;
+    }
+    .button
+    {
+      position:relative;
+      width: 195px;
+      height: 50px;
+      border: none;
+      outline:none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 0px;
+      border-radius: 50px;
+      background-color: #242225;
+      border: 0px solid #fff;
+      /*transition: 0.3s;*/
+      /*transition-property: background-color;*/
+      font-family: Mufta;
+      font-size: 20px;
+      background-image: url(http://45.76.135.158/assets/Button.png);
+      color: #fff;
+      background-size: contain;
+      background-repeat: no-repeat;
+       cursor: pointer;
+    }
+    .button:hover
+    {
+      background-color: #fff;
+      color: #242225;
+      border-radius: 50px;
+      background-image: none;
+    }
+    .button:hover span {display:none}
+    .button:hover:before {content:"Скоро"}
+
+
+    .notification-container
+    {
+      width: 100%;
+      height: 100%;
+      /*background-color: #0008;*/
+      position: absolute;
+      z-index: 10;
+      display: none;
+    }
+    .notification
+    {
+      width: 50%;
+      background-color: white;
+      color: black;
+      margin: 50px auto;
+      padding: 50px;
+      padding-bottom: 100px;
+      position: relative;
+    }
+    .close-button
+    {
+      float: right;
+      border: none;
+      outline:none;
+      color: #242225;
+      padding: 20px 50px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 0px;
+      border-radius: 50px;
+      background-color: #fff;
+      border: 1px solid #242225;
+      transition: 0.3s;
+      font-family: Merkury;
+    }
+    .close-button:hover
+    {
+      background-color: #fff;
+      color: #242225;
+    }
+    .swiper-slide img
+    {
+      /*position: absolute;*/
+      /*width: ;*/
+      /*margin-bottom: -420px;*/
+    }
+    .vote-text
+    {
+      color: #fff;
+      text-align: left;
+      height: 450px;
+      font-size: 30px;
+      margin-bottom: 50px;
+      margin-left: 25px;
+      line-height: 2 !important;
+      writing-mode: vertical-rl;
+              transform: rotate(-180deg);
+      -webkit-transform: rotate(-180deg);
+         -moz-transform: rotate(-180deg);
+          -ms-transform: rotate(-180deg);
+           -o-transform: rotate(-180deg);
+    }
+    .vote-text:first-child {font-family: Merkury}
+    .vote-text span
+    {
+      color: #949494;
+    }
+    .vote-text:first-child {  font-family: Merkury; }
+    .swipe-slide-long
+    {
+      /*width: 50%;*/
+      /*background-color: red;*/
+      position: relative;
+    }
+    .long-container
+    {
+      width: 300px;
+      /*background-color: blue;*/
+      /*margin: 0 auto;*/
+      /*position: relative;*/
+      /*display: inline-block;*/
+    }
+    .force-right
+    {
+      position: absolute;
+      right:  25px;
+    }
+    .force-left
+    {
+      position: absolute;
+      left: 25px;
+    }
+
+    #finalists-header2
+    {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 20px;
+      width: 350px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .swipe-slide-long{
+        /*width: 100%;*/
+      }
+      .vote-text
+      {
+        line-height: 2 !important;
+        font-size: 16px;
+        height: 300px
+      }
+      .button
+      {
+        width: 150px;
+        height: 40px;
+      }
+      .swiper-slide
+      {
+        width: 200px;
+      }
+      .swiper-slide img
+      {
+        width: 150px;
+        top: 85px;
+        left: 50px;
+      }
+      .button
+      {
+        width: 195px;
+        height: 50px;
+        border: none;
+        outline:none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+      }
+    }
+  </style>
+
+
+
+  <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="notification-container" id="notification-container">
+      <div class="notification">
+        <div id = "notification-success">
+          Ваш голос защитан!
+        </div>
+        <div id="notification-error">
+          Ваш голос не защитан, вы уже проголосовали!
+        </div>
+        <button class="close-button">
+          Закрыть
+        </button>
+      </div>
+    </div>
+
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <p id="finalists-header2">ФИНАЛИСТЫ КОНКУРСА 2020</p>
+        <img src="http://45.76.135.158/assets/Vote1.png">
+        <a class="vote-text" href="http://live.contextfest.com/page14176636.html">
+          <p class="mercury">***</p>
+          <p>sak-sok</p>
+          <br>
+          <p><span></span>Нурбек Батулла</p>
+        </a>
+        <button class="golos_button button" id="golos_1"><span>Голосовать</span></button>
+      </div>
+      <div class="swiper-slide">
+        <img src="http://45.76.135.158/assets/Vote2.png">
+        <a class="vote-text" href="http://live.contextfest.com/page14176514.html">
+          <p class="mercury">***</p>
+          <p>Астматический этюд</p>
+          <br>
+          <p><span></span>Игорь Булыцын</p>
+        </a>
+        <button class="golos_button button" id="golos_2"><span>Голосовать</span></button>
+      </div>
+      <div class="swiper-slide">
+        <img src="http://45.76.135.158/assets/Vote3.png">
+        <a class="vote-text" href="http://live.contextfest.com/page14176391.html">
+          <p class="mercury">***</p>
+          <p>Gentle Hearts</p>
+          <br>
+          <p><span></span>Эрнест Нургали</p>
+        </a>
+        <button class="golos_button button" id="golos_3"><span>Голосовать</span></button>
+      </div>
+      <div class="swiper-slide">
+        <img src="http://45.76.135.158/assets/Vote4.png">
+        <a class="vote-text" href="http://live.contextfest.com/page14176201.html">
+          <p class="mercury">***</p>
+          <p>“Клетка”</p>
+          <br>
+          <p><span></span>Ольга Рыжкова</p>
+        </a>
+        <button class="golos_button button" id="golos_4"><span>Голосовать</span></button>
+      </div>
+      <div class="swiper-slide">
+        <img src="http://45.76.135.158/assets/Vote5.png">
+        <a class="vote-text" href="http://live.contextfest.com/page14175910.html">
+          <p class="mercury">***</p>
+          <p>ZI-MA</p>
+          <br>
+          <p><span></span>Ирина Сергеева</p>
+        </a>
+        <button class="golos_button button" id="golos_5"><span>Голосовать</span></button>
+      </div>
+      
+      <div class="swiper-slide">
+        <p id="finalists-header2">СПЕЦИАЛЬНАЯ ПРОГРАММА</p>
+        <!-- <div class="long-container force-right"> -->
+          <img src="http://45.76.135.158/assets/novote1.png">
+          <a class="vote-text" href="http://live.contextfest.com/page14175536.html">
+            <p class="mercury">***</p>
+            <p>“Пилигрим”</p>
+            <br>
+            <p><span></span>Кирилл Радев</p>
+          </a>
+        <!-- </div> -->
+      </div>
+
+      <div class="swiper-slide">
+        <!-- <div class="long-container force-left"> -->
+          <img src="http://45.76.135.158/assets/novote2.png">
+          <a class="vote-text" href="http://contextlive.tilda.ws/page14175779.html">
+            <p class="mercury">***</p>
+            <p>Когда папа был маленький</p>
+            <br>
+            <p><span></span>Павел Глухов</p>
+          </a>
+        <!-- </div> -->
+      </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="//unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 30
+      // pagination: {
+        // el: '.swiper-pagination',
+      //      clickable: true
+      // }
+    });
+  </script>
